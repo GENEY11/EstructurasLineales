@@ -66,18 +66,19 @@ public class Pila {
         this.tope=null;
     }
     //clone (): Pila
+    @Override
     public Pila clone(){
         Pila clon = new Pila ();
         clon.tope = new Nodo (this.tope.getElem(),null);
         
-        Nodo nodoOriginal= this.tope.getEnlace();
-        Nodo nodoClon = clon.tope;
+        Nodo aux1= this.tope.getEnlace();
+        Nodo aux2 = clon.tope;
         
-        while (nodoOriginal != null){
-            Nodo nodoNuevo = new Nodo (nodoOriginal.getElem(),null);
-            nodoClon.setEnlace(nodoOriginal.getEnlace());
-            nodoClon = nodoNuevo;
-            nodoOriginal = nodoOriginal.getEnlace();          
+        while (aux1 != null){
+            Nodo nodoNuevo = new Nodo (aux1.getElem(),null);
+            aux2.setEnlace(nodoNuevo);
+            aux2 = aux2.getEnlace();
+            aux1 = aux1.getEnlace();          
             
         }
         return clon;
